@@ -39,5 +39,5 @@ func configureFunc(data *schema.ResourceData) (interface{}, error) {
 		onappgo.SetBaseURL(data.Get("hostname").(string)),
 		onappgo.SetAllowUnverifiedSSL(data.Get("allowUnverifiedSSL").(bool)),
 		onappgo.SetBasicAuth(data.Get("username").(string), data.Get("token").(string)),
-	), nil
+	)
 }
