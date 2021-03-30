@@ -1,6 +1,7 @@
 package onapp
 
 import (
+	"github.com/OnApp/onapp-sdk-go"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 )
@@ -11,13 +12,32 @@ func Provider() terraform.ResourceProvider {
 			"hostname": {
 				Type:        schema.TypeString,
 				Required:    true,
-				Description: "Endpoint hostname",
+				Description: "Host to connect",
+			},
+			"allowUnverifiedSSL": {
+				Type:        schema.TypeBool,
+				Required:    true,
+				Description: "Allow unverified ssl connection to host",
+			},
+			"username": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Username",
+			},
+			"token": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Access Token",
 			},
 		},
-		//ConfigureContextFunc: configureContextFunc,
+		ConfigureFunc: configureFunc,
 	}
 }
 
-//func configureContextFunc(ctx context.Context, data *schema.ResourceData) (interface{}, diag.Diagnostics) {
-//	return
-//}
+func configureFunc(data *schema.ResourceData) (interface{}, error) {
+	return onappgo.New(nil,
+		onappgo.SetBaseURL(data.Get("hostname").(string)),
+		onappgo.SetAllowUnverifiedSSL(data.Get("allowUnverifiedSSL").(bool)),
+		onappgo.SetBasicAuth(data.Get("username").(string), data.Get("token").(string)),
+	), nil
+}
