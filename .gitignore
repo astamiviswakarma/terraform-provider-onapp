@@ -5,6 +5,7 @@
 *.so
 *.dylib
 *.iml
+build-script.sh
 terraform-provider-onapp
 
 # Test binary, built with `go test -c`
