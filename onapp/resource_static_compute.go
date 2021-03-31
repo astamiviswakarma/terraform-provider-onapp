@@ -5,12 +5,12 @@ import (
 	"time"
 )
 
-func resourceNetwork() *schema.Resource {
+func resourceStaticCompute() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceNetworkCreate,
-		Read: 	resourceNetworkRead,
-		Update: resourceNetworkUpdate,
-		Delete: resourceNetworkDelete,
+		Create: resourceStaticComputeCreate,
+		Read: 	resourceStaticComputeRead,
+		Update: resourceStaticComputeUpdate,
+		Delete: resourceStaticComputeDelete,
 		Schema: map[string]*schema.Schema{
 			//@TODO: implement this
 		},
@@ -21,22 +21,22 @@ func resourceNetwork() *schema.Resource {
 	}
 }
 
-func resourceNetworkDelete(data *schema.ResourceData, i interface{}) error {
+func resourceStaticComputeDelete(data *schema.ResourceData, i interface{}) error {
 	//@TODO: implement this
 	return nil
 }
 
-func resourceNetworkUpdate(data *schema.ResourceData, i interface{}) error {
+func resourceStaticComputeUpdate(data *schema.ResourceData, i interface{}) error {
 	//@TODO: implement this
 	return nil
 }
 
-func resourceNetworkRead(data *schema.ResourceData, i interface{}) error {
+func resourceStaticComputeRead(data *schema.ResourceData, i interface{}) error {
 	//@TODO: implement this
 	return nil
 }
 
-func resourceNetworkCreate(data *schema.ResourceData, i interface{}) error {
+func resourceStaticComputeCreate(data *schema.ResourceData, i interface{}) error {
 	//@TODO: implement this
 	return nil
 }
