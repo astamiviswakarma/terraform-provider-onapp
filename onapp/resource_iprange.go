@@ -8,11 +8,26 @@ import (
 func resourceIPRange() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceIPRangeCreate,
-		Read: 	resourceIPRangeRead,
+		Read:   resourceIPRangeRead,
 		Update: resourceIPRangeUpdate,
 		Delete: resourceIPRangeDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"start_address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"end_address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"default_gateway": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"gateway_outside_ipnet": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

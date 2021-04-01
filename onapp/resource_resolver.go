@@ -8,11 +8,18 @@ import (
 func resourceResolver() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceResolverCreate,
-		Read: 	resourceResolverRead,
+		Read:   resourceResolverRead,
 		Update: resourceResolverUpdate,
 		Delete: resourceResolverDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"network_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

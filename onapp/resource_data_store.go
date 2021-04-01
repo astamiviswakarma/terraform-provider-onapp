@@ -8,11 +8,42 @@ import (
 func resourceDataStore() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceDataStoreCreate,
-		Read: 	resourceDataStoreRead,
+		Read:   resourceDataStoreRead,
 		Update: resourceDataStoreUpdate,
 		Delete: resourceDataStoreDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"data_store_group_id": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"local_hypervisor_id": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"ip": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"enabled": {
+				Type: schema.TypeBool,
+				Required: true,
+			},
+			"data_store_size": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"data_store_type": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"iscsi_ip": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

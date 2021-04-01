@@ -8,11 +8,22 @@ import (
 func resourceDataStoreJoin() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceDataStoreJoinCreate,
-		Read: 	resourceDataStoreJoinRead,
+		Read:   resourceDataStoreJoinRead,
 		Update: resourceDataStoreJoinUpdate,
 		Delete: resourceDataStoreJoinDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"data_store_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"target_join_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"target_join_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

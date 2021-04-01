@@ -8,11 +8,34 @@ import (
 func resourceIPNet() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceIPNetCreate,
-		Read: 	resourceIPNetRead,
+		Read:   resourceIPNetRead,
 		Update: resourceIPNetUpdate,
 		Delete: resourceIPNetDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"add_default_iprange": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"network_address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"network_mask": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"gateway_outside_ipnet": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"default_gateway": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

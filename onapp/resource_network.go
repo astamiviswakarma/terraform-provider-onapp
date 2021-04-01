@@ -8,11 +8,28 @@ import (
 func resourceNetwork() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceNetworkCreate,
-		Read: 	resourceNetworkRead,
+		Read:   resourceNetworkRead,
 		Update: resourceNetworkUpdate,
 		Delete: resourceNetworkDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"network_group_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"vlan": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+
+			// Must be set as default value: "Networking::Network"
+			"type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

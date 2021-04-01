@@ -12,7 +12,29 @@ func resourceIntegratedDataStore() *schema.Resource {
 		Update: resourceIntegratedDataStoreUpdate,
 		Delete: resourceIntegratedDataStoreDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"name": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"replicas": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"stripes": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"overcommit": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"node_ids": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

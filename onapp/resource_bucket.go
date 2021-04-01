@@ -8,11 +8,34 @@ import (
 func resourceBucket() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBucketCreate,
-		Read: 	resourceBucketRead,
+		Read:   resourceBucketRead,
 		Update: resourceBucketUpdate,
 		Delete: resourceBucketDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"currency_code": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"monthly_price": {
+				Type: schema.TypeFloat,
+				Required: true,
+			},
+			"allows_kms": {
+				Type: schema.TypeBool,
+				Required: true,
+			},
+			"allows_mak": {
+				Type: schema.TypeBool,
+				Required: true,
+			},
+			"allows_own": {
+				Type: schema.TypeBool,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

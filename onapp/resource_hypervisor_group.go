@@ -8,11 +8,66 @@ import (
 func resourceHypervisorGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceHypervisorGroupCreate,
-		Read: 	resourceHypervisorGroupRead,
+		Read:   resourceHypervisorGroupRead,
 		Update: resourceHypervisorGroupUpdate,
 		Delete: resourceHypervisorGroupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"cpu_flags_enabled": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"cpu_units": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"custom_config": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"default_gateway": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"failover_timeout": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"location_group_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"max_vms_start_at_once": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"preconfigured_only": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"recovery_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"release_resource_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"run_sysprep": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"server_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"vlan": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

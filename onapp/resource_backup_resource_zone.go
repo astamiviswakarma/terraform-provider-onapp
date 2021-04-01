@@ -8,16 +8,16 @@ import (
 func resourceBackupResourceZone() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupResourceZoneCreate,
-		Read: 	resourceBackupResourceZoneRead,
+		Read:   resourceBackupResourceZoneRead,
 		Update: resourceBackupResourceZoneUpdate,
 		Delete: resourceBackupResourceZoneDelete,
 		Schema: map[string]*schema.Schema{
 			"label": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
 			},
 			"location_group_id": {
-				Type: schema.TypeInt,
+				Type:     schema.TypeInt,
 				Required: true,
 			},
 		},

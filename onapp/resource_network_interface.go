@@ -8,11 +8,26 @@ import (
 func resourceNetworkInterface() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceNetworkInterfaceCreate,
-		Read: 	resourceNetworkInterfaceRead,
+		Read:   resourceNetworkInterfaceRead,
 		Update: resourceNetworkInterfaceUpdate,
 		Delete: resourceNetworkInterfaceDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"rate_limit": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"network_join_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"primary": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

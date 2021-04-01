@@ -8,11 +8,21 @@ import (
 func resourceRoles() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceRolesCreate,
-		Read: 	resourceRolesRead,
+		Read:   resourceRolesRead,
 		Update: resourceRolesUpdate,
 		Delete: resourceRolesDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"permission_ids": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeInt,
+				},
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

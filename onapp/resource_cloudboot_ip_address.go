@@ -12,7 +12,10 @@ func resourceCloudbootIPAddress() *schema.Resource {
 		Update: resourceCloudbootIPAddressUpdate,
 		Delete: resourceCloudbootIPAddressDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"address": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

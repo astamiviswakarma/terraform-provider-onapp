@@ -8,32 +8,32 @@ import (
 func resourceBackupResource() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupResourceCreate,
-		Read: 	resourceBackupResourceRead,
+		Read:   resourceBackupResourceRead,
 		Update: resourceBackupResourceUpdate,
 		Delete: resourceBackupResourceDelete,
 		Schema: map[string]*schema.Schema{
 			"label": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
 			},
 			"plugin": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
 			},
 			"primary_host": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
 			},
 			"username": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
 			},
 			"password": {
-				Type: schema.TypeString,
+				Type:     schema.TypeString,
 				Required: true,
-			}   ,
+			},
 			"resource_zone_id": {
-				Type: schema.TypeInt,
+				Type:     schema.TypeInt,
 				Required: true,
 			},
 		},

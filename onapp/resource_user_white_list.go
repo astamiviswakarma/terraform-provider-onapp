@@ -12,7 +12,15 @@ func resourceUserWhiteList() *schema.Resource {
 		Update: resourceUserWhiteListUpdate,
 		Delete: resourceUserWhiteListDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			// can be empty
+			"description": {
+				Type: schema.TypeString,
+				Optional: true,
+			},
+			"ip": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

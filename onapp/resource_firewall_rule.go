@@ -8,11 +8,34 @@ import (
 func resourceFirewallRule() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceFirewallRuleCreate,
-		Read: 	resourceFirewallRuleRead,
+		Read:   resourceFirewallRuleRead,
 		Update: resourceFirewallRuleUpdate,
 		Delete: resourceFirewallRuleDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"command": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"protocol": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"network_interface_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"comment": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"port": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

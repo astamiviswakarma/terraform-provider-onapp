@@ -8,11 +8,42 @@ import (
 func resourceImageTemplateGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceImageTemplateGroupCreate,
-		Read: 	resourceImageTemplateGroupRead,
+		Read:   resourceImageTemplateGroupRead,
 		Update: resourceImageTemplateGroupUpdate,
 		Delete: resourceImageTemplateGroupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"kms": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"kms_host": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"kms_port": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"kms_server_label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"mak": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"own": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"user_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

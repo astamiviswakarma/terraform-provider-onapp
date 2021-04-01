@@ -8,11 +8,26 @@ import (
 func resourceNetworkJoin() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceNetworkJoinCreate,
-		Read: 	resourceNetworkJoinRead,
+		Read:   resourceNetworkJoinRead,
 		Update: resourceNetworkJoinUpdate,
 		Delete: resourceNetworkJoinDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"network_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"interface": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"target_join_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"target_join_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

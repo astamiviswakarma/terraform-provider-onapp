@@ -8,11 +8,22 @@ import (
 func resourceBackupServerGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupServerGroupCreate,
-		Read: 	resourceBackupServerGroupRead,
+		Read:   resourceBackupServerGroupRead,
 		Update: resourceBackupServerGroupUpdate,
 		Delete: resourceBackupServerGroupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"location_group_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"server_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

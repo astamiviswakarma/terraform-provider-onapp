@@ -8,11 +8,18 @@ import (
 func resourceSSHKey() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceSSHKeyCreate,
-		Read: 	resourceSSHKeyRead,
+		Read:   resourceSSHKeyRead,
 		Update: resourceSSHKeyUpdate,
 		Delete: resourceSSHKeyDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"user_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"key": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

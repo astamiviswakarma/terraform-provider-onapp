@@ -8,11 +8,26 @@ import (
 func resourceNetworkGroup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceNetworkGroupCreate,
-		Read: 	resourceNetworkGroupRead,
+		Read:   resourceNetworkGroupRead,
 		Update: resourceNetworkGroupUpdate,
 		Delete: resourceNetworkGroupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"location_group_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"preconfigured_only": {
+				Type:     schema.TypeBool,
+				Required: true,
+			},
+			"server_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

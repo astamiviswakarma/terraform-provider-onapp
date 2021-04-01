@@ -12,7 +12,17 @@ func resourceUserGroup() *schema.Resource {
 		Update: resourceUserGroupUpdate,
 		Delete: resourceUserGroupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"billing_plan_ids": {
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeInt,
+				},
+				Optional: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this

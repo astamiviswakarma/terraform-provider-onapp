@@ -12,7 +12,18 @@ func resourceBackupServerJoin() *schema.Resource {
 		Update: resourceBackupServerJoinUpdate,
 		Delete: resourceBackupServerJoinDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"backup_server_id": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"target_join_id": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
+			"target_join_type": {
+				Type: schema.TypeString,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this
