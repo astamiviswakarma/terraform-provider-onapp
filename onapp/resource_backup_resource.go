@@ -12,7 +12,30 @@ func resourceBackupResource() *schema.Resource {
 		Update: resourceBackupResourceUpdate,
 		Delete: resourceBackupResourceDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"label": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"plugin": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"primary_host": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"username": {
+				Type: schema.TypeString,
+				Required: true,
+			},
+			"password": {
+				Type: schema.TypeString,
+				Required: true,
+			}   ,
+			"resource_zone_id": {
+				Type: schema.TypeInt,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this
