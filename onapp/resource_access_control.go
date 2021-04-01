@@ -9,11 +9,30 @@ import (
 func resourceAccessControl() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceAccessControlCreate,
-		Read: 	resourceAccessControlRead,
+		Read:   resourceAccessControlRead,
 		Update: resourceAccessControlUpdate,
 		Delete: resourceAccessControlDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"bucket_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"server_type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"target_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"type": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"limits": {
+				Type:     schema.TypeMap,
+				Optional: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this
