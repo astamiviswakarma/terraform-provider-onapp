@@ -8,11 +8,26 @@ import (
 func resourceBackup() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceBackupCreate,
-		Read: 	resourceBackupRead,
+		Read:   resourceBackupRead,
 		Update: resourceBackupUpdate,
 		Delete: resourceBackupDelete,
 		Schema: map[string]*schema.Schema{
-			//@TODO: implement this
+			"disk_id": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"note": {
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+			"force_windows_backup": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
+			"virtual_machine_id": { // Additional fie42ld to determine Virtual Machine to create disk backup
+				Type:     schema.TypeInt,
+				Required: true,
+			},
 		},
 		Timeouts: &schema.ResourceTimeout{
 			Create: schema.DefaultTimeout(20 * time.Minute), //@TODO: reconfigure this
